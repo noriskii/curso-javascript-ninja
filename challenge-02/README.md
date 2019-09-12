@@ -4,29 +4,36 @@ Nesse exercício, você está livre para escolher os nomes para suas variáveis 
 
 ```js
 // Crie uma função que receba dois argumentos e retorne a soma dos mesmos.
-?
+function soma(x, y) {
+    return x + y;
+}
 
 // Declare uma variável que receba a invocação da função criada acima, passando dois números quaisquer por argumento, e somando `5` ao resultado retornado da função.
-?
+var resultado = soma(2, 3) + 5;
 
 // Qual o valor atualizado dessa variável?
-?
+10
 
 // Declare uma nova variável, sem valor.
-?
+var newVar;
 
 /*
 Crie uma função que adicione um valor à variável criada acima, e retorne a string:
     O valor da variável agora é VALOR.
 Onde VALOR é o novo valor da variável.
 */
-?
+function setValor() {
+    newVar = 7;
+    return 'O valor da variável agora é ' + newVar;
+}
 
 // Invoque a função criada acima.
-?
+setValor();
 
 // Qual o retorno da função? (Use comentários de bloco).
-?
+/*
+'O valor da variável agora é 7'
+*/
 
 /*
 Crie uma função com as seguintes características:
@@ -35,19 +42,24 @@ Crie uma função com as seguintes características:
     Preencha todos os valores corretamente!
 3. O retorno da função deve ser a multiplicação dos 3 argumentos, somando `2` ao resultado da multiplicação.
 */
-?
+function multiplyThree(a, b, c) {
+    if(a === undefined || b === undefined || c === undefined) {
+        return 'Preencha todos os valores corretamente!';
+    } //Não é necessário o else, uma vez que o return já da break no código
+    return (a * b * c) + 2;
+}
 
 // Invoque a função criada acima, passando só dois números como argumento.
-?
+multiplyThree(2,2);
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-?
+//'Preencha todos os valores corretamente!'
 
 // Agora invoque novamente a função criada acima, mas passando todos os três argumentos necessários.
-?
+multiplyThree(2,2,2);
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-?
+//10
 
 /*
 Crie uma função com as seguintes características:
@@ -58,8 +70,23 @@ Crie uma função com as seguintes características:
 5. Se nenhum argumento for passado, retorne o valor booleano `false`.
 6. E ainda, se nenhuma das condições acima forem atendidas, retorne `null`.
 */
-?
+function dinamicArgs(a,b,c) {
+    if(a !== undefined && b === undefined && c === undefined) {
+        return '1 argumento (a): ' + a;
+    } else if (a !== undefined && b !== undefined && c === undefined) {
+        return '2 argumentos (a + b): ' + (a + b);
+    } else if (a !== undefined && b !== undefined && c !== undefined) {
+        return '3 argumentos (a + b) / c: ' + ((a + b) / c);
+    } else if (a === undefined && b === undefined && c === undefined) {
+        return false;
+    }
+    return null;
+}
 
 // Invoque a função acima utilizando todas as possibilidades (com nenhum argumento, com um, com dois e com três.) Coloque um comentário de linha ao lado da função com o resultado de cada invocação.
-?
+dinamicArgs(); // false
+dinamicArgs(1); // '1 argumento (a): 1'
+dinamicArgs(1,2); // '2 argumentos (a + b): 3'
+dinamicArgs(1,2,3); // '3 argumentos (a + b) / c: 1'
+
 ```
