@@ -45,9 +45,8 @@ Crie uma função com as seguintes características:
 function multiplyThree(a, b, c) {
     if(a === undefined || b === undefined || c === undefined) {
         return 'Preencha todos os valores corretamente!';
-    } else {
-        return (a * b * c) + 2;
-    }
+    } //Não é necessário o else, uma vez que o return já da break no código
+    return (a * b * c) + 2;
 }
 
 // Invoque a função criada acima, passando só dois números como argumento.
@@ -60,7 +59,7 @@ multiplyThree(2,2);
 multiplyThree(2,2,2);
 
 // Qual o resultado da invocação acima? (Use comentários para mostrar o valor retornado).
-10
+//10
 
 /*
 Crie uma função com as seguintes características:
@@ -78,13 +77,14 @@ function dinamicArgs(a,b,c) {
         return '2 argumentos (a + b): ' + (a + b);
     } else if (a !== undefined && b !== undefined && c !== undefined) {
         return '3 argumentos (a + b) / c: ' + ((a + b) / c);
-    } else {
-        return null;
+    } else if (a === undefined && b === undefined && c === undefined) {
+        return false;
     }
+    return null;
 }
 
 // Invoque a função acima utilizando todas as possibilidades (com nenhum argumento, com um, com dois e com três.) Coloque um comentário de linha ao lado da função com o resultado de cada invocação.
-dinamicArgs(); // null
+dinamicArgs(); // false
 dinamicArgs(1); // '1 argumento (a): 1'
 dinamicArgs(1,2); // '2 argumentos (a + b): 3'
 dinamicArgs(1,2,3); // '3 argumentos (a + b) / c: 1'
