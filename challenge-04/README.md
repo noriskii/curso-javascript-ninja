@@ -28,7 +28,7 @@ isTruthy(true);
 isTruthy('0');
 isTruthy('valor');
 isTruthy(123);
-isTruthy(212);
+isTruthy(function() {});
 isTruthy({});
 isTruthy([]);
 isTruthy('false');
@@ -49,7 +49,7 @@ seguintes propriedades (os valores devem ser do tipo mostrado abaixo):
 var carro = {
     marca: 'audi',
     modelo: 'a305',
-    placa: 'JSX0123',
+    placa: 'JSX-0123',
     ano: 2018,
     cor: 'preto',
     quantasPortas: 4,
@@ -61,9 +61,9 @@ var carro = {
 Crie um método chamado `mudarCor` que mude a cor do carro conforme a cor
 passado por parâmetro.
 */
-carro.mudaCor = function (cor) {
+carro.mudarCor = function (cor) {
     carro.cor = cor;
-};
+};  
 
 /*
 Crie um método chamado `obterCor`, que retorne a cor do carro.
@@ -111,6 +111,7 @@ mostrar quantos assentos ainda podem ser ocupados, com a frase:
 - Se couber somente mais uma pessoa, mostrar a palavra "pessoa" no retorno
 citado acima, no lugar de "pessoas".
 */
+//lucks
 carro.adicionarPessoas = function (quantidadePessoas) {
     var assentosLivres = carro.assentos - carro.quantidadePessoas;
     var pessoa;
@@ -132,6 +133,24 @@ carro.adicionarPessoas = function (quantidadePessoas) {
     }
 };
 
+//daciuk
+carro.adicionarPessoas = function (numeroPessoas) {
+    var totalPessoas = carro.quantidadePessoas + numeroPessoas;
+    
+    if(carro.quantidadePessoas === carro.assentos && totalPessoas >= carro.assentos) {
+        return 'O carro já está lotado';
+    }
+
+    if(totalPessoas > carro.assentos) {
+        var quantasPessoasCabem = carro.assentos - carro.quantidadePessoas;
+        var pluralOuSingular = quantasPessoasCabem === 1 ? ' pessoa' : ' pessoas';
+        return 'Só cabem mais ' + quantasPessoasCabem + pluralOuSingular + '!';
+    }
+
+    carro.quantidadePessoas += numeroPessoas;
+    return 'Já temos ' + carro.quantidadePessoas + ' no carro!';
+};
+
 /*
 Agora vamos verificar algumas informações do carro. Para as respostas abaixo,
 utilize sempre o formato de invocação do método (ou chamada da propriedade),
@@ -143,13 +162,13 @@ Qual a cor atual do carro?
 carro.obterCor(); // 'preto'
 
 // Mude a cor do carro para vermelho.
-carro.mudaCor('vermelho');
+carro.mudarCor('vermelho');
 
 // E agora, qual a cor do carro?
 carro.obterCor(); // 'vermelho'
 
 // Mude a cor do carro para verde musgo.
-carro.mudaCor('verde musgo');
+carro.mudarCor('verde musgo');
 
 // E agora, qual a cor do carro?
 carro.obterCor(); // 'verde musgo'
