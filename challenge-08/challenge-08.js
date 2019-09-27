@@ -54,6 +54,7 @@ vai efetuar. Será uma string com os valores `+`, `-`, `*`, `/` ou `%`;
   - Se o operador não for válido, retornar a frase:
   "Operação inválida."
 */
+//lucks
 function calculator(operation) {
     return function calculate(num1, num2) {
         if(operation === '+' || operation === '-' 
@@ -62,9 +63,34 @@ function calculator(operation) {
             return 'Resultado da operação: ' + num1 + ' ' + operation + ' ' + num2 + ' = ' + eval(num1 + operation + num2) + '.';
         } 
         return 'Operação inválida.';
-    }    
+    };    
 }
-
+//daciuk
+function calculator(operator) {
+    return function (number1, number2) {
+        var result;
+        switch (operator) {
+            case '+':
+                result = number1 + number2;
+                break;
+            case '-':
+                result = number1 - number2;
+                break;
+            case '*':
+                result = number1 * number2;
+                break;
+            case '/':
+                result = number1 / number2;
+                break;
+            case '%':
+                result = number1 % number2;
+                break;
+            default:
+                return 'Operação inválida.';
+        }
+        return 'Resultado da operação: ' + number1 + ' ' + operation + ' ' + number2 + ' = ' + result + '.';
+    };
+}
 /*
 Declare uma variável chamada `sum`, que receberá a função acima, passando como
 parâmetro o operador de soma.
