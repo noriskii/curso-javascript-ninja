@@ -26,20 +26,20 @@
     propriedade, usando os valores passados por parâmetro.
     */
     var operation = {
-        '+': function(number1, number2) {
-            return number1 + number2;
+        '+' : function(x, y) {
+            return x + y;
         },
-        '-': function(number1, number2) {
-            return number1 - number2;
+        '-' : function(x, y) {
+            return x - y;
         },
-        '*': function(number1, number2) {
-            return number1 * number2;
+        '*' : function(x, y) {
+            return x * y;
         },
-        '/': function(number1, number2) {
-            return number1 / number2;
+        '/' : function(x, y) {
+            return x / y;
         },
-        '%': function(number1, number2) {
-            return number1 % number2;
+        '%' : function(x, y) {
+            return x % y;
         }
     };
 
@@ -54,7 +54,7 @@
     - O desafio é fazer o retorno sem usar "if" ou "switch".
     */
     function isOperatorValid(operator) {
-        return operator === '+' || operator === '-' || operator === '*' || operator === '/' || operator === '%' ? 'true' : 'false';
+        return !!operation[operator];
     }
 
     /*
@@ -70,13 +70,15 @@
     os dois parâmetros da função de retorno de "calculator".
     */
     function calculator(operator) {
-        if(isOperatorValid(operator)) {
-            return function(number1, number2) {
-                return typeof number1 === 'number' && typeof number2 === 'number' ? operation[operator](number2, number2) : 'false';
-            };    
-        } else {
-            return 'false';
-        }
+        if(!isOperatorValid(operator)) {
+            return false;    
+        } 
+        return function(x, y) {
+            if(typeof x !== 'number' || typeof y !== 'number') {
+                return false;
+            }
+            return operation[operator](x, y);
+        };
     }
 
     /*
@@ -97,7 +99,7 @@
     'Operação "[OPERATOR]" não permitida!'
     */
     function showErrorMessage(operator) {
-        return 'Operação ' + operator + ' não permitida!';
+        return 'Operação "' + operator + '" não permitida!';
     }
 
     /*
@@ -118,7 +120,6 @@
     */
     operationSignal = '+';
     var sum = calculator(operationSignal);
-    console.log(sum(2,31))
     
     /*
     PASSO 3:
@@ -132,18 +133,76 @@
     - O segundo, a função de soma, passando os dois operandos.
     - Se "sum" for "false", mostrar no console a mensagem de erro.
     */
+    if(sum) {
+        number1 = 12;
+        number2 = 23;
+        console.log(showOperationMessage(operationSignal, number1, number2), sum(number1, number2));
+    } else {
+        console.log(showErrorMessage(operationSignal));
+    }
 
     /*
     Repita desde o "PASSO 2" com as operações de subtração, multiplicação,
     divisão e resto. Crie variáveis com os nomes "subtraction",
     "multiplication", "division" e "mod".
     */
-    // ?
+    operationSignal = '-';
+    var subtraction = calculator(operationSignal);
+    
+    if(subtraction) {
+        number1 = 131;
+        number2 = 51;
+        console.log(showOperationMessage(operationSignal, number1, number2), subtraction(number1, number2));
+    } else {
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal = '*';
+    var multiplication = calculator(operationSignal);
+    
+    if(multiplication) {
+        number1 = 6;
+        number2 = 16;
+        console.log(showOperationMessage(operationSignal, number1, number2), multiplication(number1, number2));
+    } else {
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal = '/';
+    var division = calculator(operationSignal);
+    
+    if(division) {
+        number1 = 223;
+        number2 = 14;
+        console.log(showOperationMessage(operationSignal, number1, number2), division(number1, number2));
+    } else {
+        console.log(showErrorMessage(operationSignal));
+    }
+
+    operationSignal = '%';
+    var mod = calculator(operationSignal);
+
+    if(mod) {
+        number1 = 1193415627;
+        number2 = 128;
+        console.log(showOperationMessage(operationSignal, number1, number2), mod(number1, number2));
+    } else {
+        console.log(showErrorMessage(operationSignal));
+    }
 
     /*
     Repita o PASSO 2 novamente, mas passando um operador inválido, para ver se
     a mensagem de erro será mostrada no console.
     */
-    // ?
+   operationSignal = 'raiz';
+   var invalid = calculator(operationSignal);
+
+   if(invalid) {
+       number1 = 1;
+       number2 = 2;
+       console.log(showOperationMessage(operationSignal, number1, number2), invalid(number1, number2));
+   } else {
+       console.log(showErrorMessage(operationSignal));
+   }
 
 })();
