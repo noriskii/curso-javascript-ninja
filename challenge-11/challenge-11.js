@@ -1,4 +1,4 @@
-(function () {
+(function() {
     // Envolva todo o código desse arquivo em uma IIFE (incluindo esse comentário).
 
     /*
@@ -23,7 +23,7 @@
         name: 'Lucas Augusto Silva',
         age: 22,
         weight: 65,
-        birthday: '07/02/1997'
+        birthday: '07/02'
     };
 
     /*
@@ -51,10 +51,7 @@
     'The person has more than 25 years old? [TRUE/FALSE]'
     */
     function moreThan(age) {
-        if(person.age > age) {
-            return true;
-        }
-        return false;
+        return person.age > age;
     }
     console.log('The person has more than 25 years old?',moreThan(25));
 
@@ -79,10 +76,10 @@
     esses. Se o número for ímpar, pular para o próximo número.
     Mostrar no console os números do array.
     */
-    var numbers = [];
+    numbers = [];
     console.log( 'Pares de 0 a 20:' );
     for(var x = 0; x <= 20; x++) {
-        if(x % 2) {
+        if(x % 2) { // x % 2 !== 0
             continue;
         }
         numbers.push(x);
