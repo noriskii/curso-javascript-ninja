@@ -89,13 +89,17 @@
     no formato abaixo:
         "[PROPRIEDADE]: [VALOR]"
     */
-    console.log(books);
+    for (var i in books) {
+        for (var prop in books[i]) {
+            console.log(prop + ': ' + books[i][prop]);
+        }
+    }
 
     /*
     Crie um array chamado `myName`. Cada item desse array deve ser uma letra do
     seu nome. Adicione seu nome completo no array.
     */
-    var myName = ['l', 'u', 'c', 'a', 's'];
+    var myName = ['L', 'u', 'c', 'a', 's'];
     console.log( '\nMeu nome é:' );
 
     /*
@@ -114,6 +118,6 @@
     /*
     Mostre todos os itens do array acima, odenados alfabéticamente.
     */
-    console.log(myName.sort().join(''));
+    console.log(myName.sort());
 
 })()
