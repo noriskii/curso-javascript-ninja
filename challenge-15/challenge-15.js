@@ -34,7 +34,7 @@
     };
     this.addAge = function addAge() {
       this.age += arguments[0];
-      return this.age;
+      return this;
     };
   }
 
@@ -75,10 +75,7 @@
   - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
   */
   console.log( '\nNova idade das pessoas:' );
-  lucas.addAge(6);
-  jessica.addAge(3);
-  rivolta.addAge(1);
-  console.log(lucas.getFullName() + ' agora tem ' + lucas.getAge() + ' anos.');
-  console.log(jessica.getFullName() + ' agora tem ' + jessica.getAge() + ' anos.');
-  console.log(rivolta.getFullName() + ' agora tem ' + rivolta.getAge() + ' anos.');
+  console.log(lucas.getFullName() + ' agora tem ' + lucas.addAge(6).getAge() + ' anos.');
+  console.log(jessica.getFullName() + ' agora tem ' + jessica.addAge(3).getAge() + ' anos.');
+  console.log(rivolta.getFullName() + ' agora tem ' + rivolta.addAge(1).getAge() + ' anos.');
 })();
