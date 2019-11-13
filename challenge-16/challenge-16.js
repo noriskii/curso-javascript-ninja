@@ -17,7 +17,7 @@
     */
     var name = 'Lucas';
     console.log( 'As letras do seu nome:' );
-    for(var index = 0; index < name.length; index++) {
+    for(var index = 0, len = name.length; index < len; index++) {
         console.log(name.charAt(index) + ' é a ' + (index + 1) + 'ª letra do meu nome.'); 
     }
 
@@ -38,8 +38,11 @@
     console.log(fullName);
     console.log(fullName.split('-').reduce(function(prev, currVal) {
         return prev.replace(prev.charAt(0),prev.charAt(0).toUpperCase()) + 
-                ' ' + currVal.replace(currVal.charAt(0),currVal.charAt(0).toUpperCase());
+                ' ' + currVal.replace(currVal.charAt(0), currVal.charAt(0).toUpperCase());
     }),'');
+    console.log(fullName.split('-').map(function(value) {
+        return value.charAt(0).toUpperCase() + value.slice(1);
+    }).join(' '));
 
     /*
     - Crie um array com 5 nomes. Reduza esses nomes a uma única string, separando
@@ -60,22 +63,25 @@
         }
         return prev;
     }));
+    console.log(friends.reduce(function(acumulado, atual, idx) {
+        var separator = friends.length - 1 === idx ? ' e ' : ', ';
+        return acumulado + separator + atual;
+    }).concat(' são meus amigos.'));
 
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
     Mostre o resultado no console.
     */
-    var roberto = 'Roberto';
     console.log( '\nEra "Roberto", agora é:' );
-    console.log(roberto.split('o').join('a').replace('a','o'));
+    console.log('Roberto'.split('o').join('a').replace('a','o'));
+    console.log('Roberto'.replace('to','ta'));
 
     /*
     Mostre no console a parte "nando" da string "Fernando". Use o método que
     faz a busca do final para o início da string.
     */
-    var fernando = 'Fernando';
     console.log( '\nParte de uma string:' );
-    console.log(fernando.slice(3));
+    console.log('Fernando'.slice(3));
 
     /*
     Declare uma variável chamada `myName`, que receba o seu primeiro nome,
@@ -89,16 +95,9 @@
     var myName = 'Lucas';
     console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
     var messingUpNames = [];
-    for(var idx = 0; idx < myName.length; idx++) {
-        messingUpNames.push(myName.charAt(idx));
+    for(var i = 0, len = myName.length; i < len; i++) {
+        messingUpNames.push(i % 2 === 0 ? myName[i].toLowerCase() : myName[i].toUpperCase());
     }
-    console.log(messingUpNames.reduce(function(prev, next, index) {
-        if(index % 2) {
-            prev += next.toLowerCase();
-        } else {
-            prev += next.toUpperCase();
-        }
-        return prev;
-    }),'');
+    console.log(messingUpNames.join(''));
     // ?
 })();
